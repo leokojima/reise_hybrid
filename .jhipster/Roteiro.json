@@ -1,0 +1,40 @@
+{
+  "name": "Roteiro",
+  "fields": [
+    {
+      "fieldName": "nomeroteiro",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "statusr",
+      "fieldType": "Status",
+      "fieldValues": "ATIVO,SUSPENSO,CANCELADO"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "viajante",
+      "otherEntityRelationshipName": "roteiro",
+      "relationshipName": "viajante",
+      "otherEntityField": "nome",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "roteiro",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210511025221"
+}

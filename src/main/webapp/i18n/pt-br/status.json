@@ -1,0 +1,10 @@
+{
+  "reiseHybridApp": {
+    "Status": {
+      "null": "",
+      "ATIVO": "ATIVO",
+      "SUSPENSO": "SUSPENSO",
+      "CANCELADO": "CANCELADO"
+    }
+  }
+}

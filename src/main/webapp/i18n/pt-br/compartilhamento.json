@@ -1,0 +1,27 @@
+{
+  "reiseHybridApp": {
+    "compartilhamento": {
+      "home": {
+        "title": "Compartilhamentos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Compartilhamento",
+        "createOrEditLabel": "Criar ou editar Compartilhamento",
+        "notFound": "Nenhum Compartilhamento encontrado"
+      },
+      "created": "Um novo Compartilhamento foi criado com o identificador {{ param }}",
+      "updated": "Um Compartilhamento foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Compartilhamento foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Compartilhamento {{ id }}?"
+      },
+      "detail": {
+        "title": "Compartilhamento"
+      },
+      "id": "ID",
+      "nomeComp": "Nome Comp",
+      "descricaoComp": "Descricao Comp",
+      "dataCriacao": "Data Criacao",
+      "viajante": "Viajante"
+    }
+  }
+}

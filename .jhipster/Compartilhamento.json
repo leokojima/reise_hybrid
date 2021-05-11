@@ -1,0 +1,38 @@
+{
+  "name": "Compartilhamento",
+  "fields": [
+    {
+      "fieldName": "nomeComp",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descricaoComp",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "dataCriacao",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "viajante",
+      "otherEntityRelationshipName": "compartilhamento",
+      "relationshipName": "viajante",
+      "otherEntityField": "nome"
+    }
+  ],
+  "entityTableName": "compartilhamento",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210511025222"
+}

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="local">
+      <h2 data-cy="localDetailsHeading"><span jhiTranslate="reiseHybridApp.local.detail.title">Local</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ local.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.local.nomelocal">Nomelocal</span></dt>
+        <dd>
+          <span>{{ local.nomelocal }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.local.email">Email</span></dt>
+        <dd>
+          <span>{{ local.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.local.foto">Foto</span></dt>
+        <dd>
+          <div *ngIf="local.foto">
+            <a (click)="openFile(local.foto, local.fotoContentType)">
+              <img [src]="'data:' + local.fotoContentType + ';base64,' + local.foto" style="max-width: 100%" alt="local image" />
+            </a>
+            {{ local.fotoContentType }}, {{ byteSize(local.foto) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.local.tipo">Tipo</span></dt>
+        <dd>
+          <span>{{ local.tipo }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.local.statusl">Statusl</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reiseHybridApp.Status.' + local.statusl }}">{{ local.statusl }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/local', local.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

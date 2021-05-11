@@ -1,0 +1,30 @@
+{
+  "reiseHybridApp": {
+    "viajante": {
+      "home": {
+        "title": "Viajantes",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Viajante",
+        "createOrEditLabel": "Criar ou editar Viajante",
+        "notFound": "Nenhum Viajante encontrado"
+      },
+      "created": "Um novo Viajante foi criado com o identificador {{ param }}",
+      "updated": "Um Viajante foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Viajante foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Viajante {{ id }}?"
+      },
+      "detail": {
+        "title": "Viajante"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "email": "Email",
+      "foto": "Foto",
+      "dataNascimento": "Data Nascimento",
+      "statusv": "Statusv",
+      "local": "Local",
+      "roteiro": "Roteiro"
+    }
+  }
+}

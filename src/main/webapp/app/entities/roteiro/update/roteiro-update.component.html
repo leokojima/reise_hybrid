@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-roteiro-heading" data-cy="RoteiroCreateUpdateHeading" jhiTranslate="reiseHybridApp.roteiro.home.createOrEditLabel">
+        Create or edit a Roteiro
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reiseHybridApp.roteiro.nomeroteiro" for="field_nomeroteiro">Nomeroteiro</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomeroteiro"
+            id="field_nomeroteiro"
+            data-cy="nomeroteiro"
+            formControlName="nomeroteiro"
+          />
+          <div *ngIf="editForm.get('nomeroteiro')!.invalid && (editForm.get('nomeroteiro')!.dirty || editForm.get('nomeroteiro')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomeroteiro')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reiseHybridApp.roteiro.tipo" for="field_tipo">Tipo</label>
+          <input type="text" class="form-control" name="tipo" id="field_tipo" data-cy="tipo" formControlName="tipo" />
+          <div *ngIf="editForm.get('tipo')!.invalid && (editForm.get('tipo')!.dirty || editForm.get('tipo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('tipo')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reiseHybridApp.roteiro.statusr" for="field_statusr">Statusr</label>
+          <select class="form-control" name="statusr" formControlName="statusr" id="field_statusr" data-cy="statusr">
+            <option [ngValue]="null">{{ 'reiseHybridApp.Status.null' | translate }}</option>
+            <option value="ATIVO">{{ 'reiseHybridApp.Status.ATIVO' | translate }}</option>
+            <option value="SUSPENSO">{{ 'reiseHybridApp.Status.SUSPENSO' | translate }}</option>
+            <option value="CANCELADO">{{ 'reiseHybridApp.Status.CANCELADO' | translate }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "reiseHybridApp": {
+    "roteiro": {
+      "home": {
+        "title": "Roteiros",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Roteiro",
+        "createOrEditLabel": "Criar ou editar Roteiro",
+        "notFound": "Nenhum Roteiro encontrado"
+      },
+      "created": "Um novo Roteiro foi criado com o identificador {{ param }}",
+      "updated": "Um Roteiro foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Roteiro foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Roteiro {{ id }}?"
+      },
+      "detail": {
+        "title": "Roteiro"
+      },
+      "id": "ID",
+      "nomeroteiro": "Nomeroteiro",
+      "tipo": "Tipo",
+      "statusr": "Statusr",
+      "viajante": "Viajante"
+    }
+  }
+}

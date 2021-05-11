@@ -1,0 +1,29 @@
+{
+  "reiseHybridApp": {
+    "local": {
+      "home": {
+        "title": "Locals",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Local",
+        "createOrEditLabel": "Criar ou editar Local",
+        "notFound": "Nenhum Local encontrado"
+      },
+      "created": "Um novo Local foi criado com o identificador {{ param }}",
+      "updated": "Um Local foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Local foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Local {{ id }}?"
+      },
+      "detail": {
+        "title": "Local"
+      },
+      "id": "ID",
+      "nomelocal": "Nomelocal",
+      "email": "Email",
+      "foto": "Foto",
+      "tipo": "Tipo",
+      "statusl": "Statusl",
+      "viajante": "Viajante"
+    }
+  }
+}

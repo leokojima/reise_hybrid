@@ -1,0 +1,57 @@
+{
+  "name": "Viajante",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "foto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "dataNascimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "statusv",
+      "fieldType": "Status",
+      "fieldValues": "ATIVO,SUSPENSO,CANCELADO"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "local",
+      "otherEntityRelationshipName": "viajante",
+      "relationshipName": "local",
+      "otherEntityField": "nomelocal",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "roteiro",
+      "otherEntityRelationshipName": "viajante",
+      "relationshipName": "roteiro",
+      "otherEntityField": "nomeroteiro",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "viajante",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210511025219"
+}

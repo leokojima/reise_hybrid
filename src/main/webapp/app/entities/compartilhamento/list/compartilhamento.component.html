@@ -1,0 +1,88 @@
+<div>
+  <h2 id="page-heading" data-cy="CompartilhamentoHeading">
+    <span jhiTranslate="reiseHybridApp.compartilhamento.home.title">Compartilhamentos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="reiseHybridApp.compartilhamento.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-compartilhamento"
+        [routerLink]="['/compartilhamento/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="reiseHybridApp.compartilhamento.home.createLabel"> Create a new Compartilhamento </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="compartilhamentos?.length === 0">
+    <span jhiTranslate="reiseHybridApp.compartilhamento.home.notFound">No compartilhamentos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="compartilhamentos && compartilhamentos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="reiseHybridApp.compartilhamento.nomeComp">Nome Comp</span></th>
+          <th scope="col"><span jhiTranslate="reiseHybridApp.compartilhamento.descricaoComp">Descricao Comp</span></th>
+          <th scope="col"><span jhiTranslate="reiseHybridApp.compartilhamento.dataCriacao">Data Criacao</span></th>
+          <th scope="col"><span jhiTranslate="reiseHybridApp.compartilhamento.viajante">Viajante</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compartilhamento of compartilhamentos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/compartilhamento', compartilhamento.id, 'view']">{{ compartilhamento.id }}</a>
+          </td>
+          <td>{{ compartilhamento.nomeComp }}</td>
+          <td>{{ compartilhamento.descricaoComp }}</td>
+          <td>{{ compartilhamento.dataCriacao | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="compartilhamento.viajante">
+              <a [routerLink]="['/viajante', compartilhamento.viajante?.id, 'view']">{{ compartilhamento.viajante?.nome }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/compartilhamento', compartilhamento.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/compartilhamento', compartilhamento.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(compartilhamento)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

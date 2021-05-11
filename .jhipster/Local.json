@@ -1,0 +1,49 @@
+{
+  "name": "Local",
+  "fields": [
+    {
+      "fieldName": "nomelocal",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "foto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statusl",
+      "fieldType": "Status",
+      "fieldValues": "ATIVO,SUSPENSO,CANCELADO"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "viajante",
+      "otherEntityRelationshipName": "local",
+      "relationshipName": "viajante",
+      "otherEntityField": "nome",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "local",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210511025220"
+}

@@ -1,0 +1,101 @@
+<div>
+  <h2 id="page-heading" data-cy="ViajanteHeading">
+    <span jhiTranslate="reiseHybridApp.viajante.home.title">Viajantes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="reiseHybridApp.viajante.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-viajante"
+        [routerLink]="['/viajante/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="reiseHybridApp.viajante.home.createLabel"> Create a new Viajante </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="viajantes?.length === 0">
+    <span jhiTranslate="reiseHybridApp.viajante.home.notFound">No viajantes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="viajantes && viajantes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nome">
+            <span jhiTranslate="reiseHybridApp.viajante.nome">Nome</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="reiseHybridApp.viajante.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="foto">
+            <span jhiTranslate="reiseHybridApp.viajante.foto">Foto</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dataNascimento">
+            <span jhiTranslate="reiseHybridApp.viajante.dataNascimento">Data Nascimento</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="statusv">
+            <span jhiTranslate="reiseHybridApp.viajante.statusv">Statusv</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let viajante of viajantes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/viajante', viajante.id, 'view']">{{ viajante.id }}</a>
+          </td>
+          <td>{{ viajante.nome }}</td>
+          <td>{{ viajante.email }}</td>
+          <td>
+            <a *ngIf="viajante.foto" (click)="openFile(viajante.foto, viajante.fotoContentType)">
+              <img [src]="'data:' + viajante.fotoContentType + ';base64,' + viajante.foto" style="max-height: 30px" alt="viajante image" />
+            </a>
+            <span *ngIf="viajante.foto">{{ viajante.fotoContentType }}, {{ byteSize(viajante.foto) }}</span>
+          </td>
+          <td>{{ viajante.dataNascimento | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'reiseHybridApp.Status.' + viajante.statusv }}">{{ viajante.statusv }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/viajante', viajante.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/viajante', viajante.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(viajante)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

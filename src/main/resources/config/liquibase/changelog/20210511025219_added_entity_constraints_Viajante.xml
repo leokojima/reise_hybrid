@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Viajante.
+    -->
+    <changeSet id="20210511025219-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="viajante_id"
+                                 baseTableName="rel_viajante__local"
+                                 constraintName="fk_rel_viajante__local__viajante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="viajante"/>
+
+        <addForeignKeyConstraint baseColumnNames="local_id"
+                                 baseTableName="rel_viajante__local"
+                                 constraintName="fk_rel_viajante__local__local_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="local"/>
+
+        <addForeignKeyConstraint baseColumnNames="viajante_id"
+                                 baseTableName="rel_viajante__roteiro"
+                                 constraintName="fk_rel_viajante__roteiro__viajante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="viajante"/>
+
+        <addForeignKeyConstraint baseColumnNames="roteiro_id"
+                                 baseTableName="rel_viajante__roteiro"
+                                 constraintName="fk_rel_viajante__roteiro__roteiro_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roteiro"/>
+    </changeSet>
+</databaseChangeLog>

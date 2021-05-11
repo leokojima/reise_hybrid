@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="viajante">
+      <h2 data-cy="viajanteDetailsHeading"><span jhiTranslate="reiseHybridApp.viajante.detail.title">Viajante</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ viajante.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.viajante.nome">Nome</span></dt>
+        <dd>
+          <span>{{ viajante.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.viajante.email">Email</span></dt>
+        <dd>
+          <span>{{ viajante.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.viajante.foto">Foto</span></dt>
+        <dd>
+          <div *ngIf="viajante.foto">
+            <a (click)="openFile(viajante.foto, viajante.fotoContentType)">
+              <img [src]="'data:' + viajante.fotoContentType + ';base64,' + viajante.foto" style="max-width: 100%" alt="viajante image" />
+            </a>
+            {{ viajante.fotoContentType }}, {{ byteSize(viajante.foto) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.viajante.dataNascimento">Data Nascimento</span></dt>
+        <dd>
+          <span>{{ viajante.dataNascimento | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.viajante.statusv">Statusv</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reiseHybridApp.Status.' + viajante.statusv }}">{{ viajante.statusv }}</span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.viajante.local">Local</span></dt>
+        <dd>
+          <span *ngFor="let local of viajante.locals; let last = last">
+            <a [routerLink]="['/local', local?.id, 'view']">{{ local.nomelocal }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="reiseHybridApp.viajante.roteiro">Roteiro</span></dt>
+        <dd>
+          <span *ngFor="let roteiro of viajante.roteiros; let last = last">
+            <a [routerLink]="['/roteiro', roteiro?.id, 'view']">{{ roteiro.nomeroteiro }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/viajante', viajante.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

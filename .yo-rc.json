@@ -41,6 +41,8 @@
     "jwtSecretKey": "MmI1ZGYwMjc4MjBlY2ZlYWQ0MzdmYTQ2ZDhmY2ZmZTAzOGQwODA1NjFiZDg0ZWUxN2I3NzgzYWU0Y2ExYTM5MmI4NTM5NzI0ODAxMzdlOGJkNDA4YzcwMThkZjNlNGRlYTExZTExYWFlMTJhMGEyMDIyYzE1ZDY4OTRjOTEzYjc=",
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["pt-br"]
+    "languages": ["pt-br"],
+    "entities": ["Viajante", "Local", "Roteiro", "Compartilhamento"],
+    "lastLiquibaseTimestamp": 1620701542000
   }
 }

@@ -48,6 +48,14 @@ public class CacheConfiguration {
             createCache(cm, com.reise.reise.domain.User.class.getName());
             createCache(cm, com.reise.reise.domain.Authority.class.getName());
             createCache(cm, com.reise.reise.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.reise.reise.domain.Viajante.class.getName());
+            createCache(cm, com.reise.reise.domain.Viajante.class.getName() + ".locals");
+            createCache(cm, com.reise.reise.domain.Viajante.class.getName() + ".roteiros");
+            createCache(cm, com.reise.reise.domain.Local.class.getName());
+            createCache(cm, com.reise.reise.domain.Local.class.getName() + ".viajantes");
+            createCache(cm, com.reise.reise.domain.Roteiro.class.getName());
+            createCache(cm, com.reise.reise.domain.Roteiro.class.getName() + ".viajantes");
+            createCache(cm, com.reise.reise.domain.Compartilhamento.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
