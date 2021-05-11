@@ -1,0 +1,28 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+version: '3.8'
+services:
+  reise_hybrid-app:
+    image: reise_hybrid
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://reise_hybrid-postgresql:5432/reise_hybrid
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://reise_hybrid-postgresql:5432/reise_hybrid
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:8080:8080
+  reise_hybrid-postgresql:
+    image: postgres:13.2
+    # volumes:
+    #   - ~/volumes/jhipster/reise_hybrid/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=reise_hybrid
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:5432:5432
