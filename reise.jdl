@@ -1,0 +1,52 @@
+entity Viajante {
+	nome String required,
+	email String required,
+	foto ImageBlob,
+	dataNascimento LocalDate,
+	statusv Status
+}
+
+entity Local {
+	nomelocal String required,
+	email String required,
+	foto ImageBlob,
+	tipo String,
+	statusl Status
+}
+
+entity Roteiro {
+	nomeroteiro String required,
+    tipo String required,
+    statusr Status
+}
+
+enum Status {
+	ATIVO, SUSPENSO, CANCELADO
+}
+
+entity Compartilhamento {
+	nomeComp String required,
+	descricaoComp TextBlob,
+	dataCriacao LocalDate
+}
+
+relationship ManyToMany {
+	Viajante{local(nomelocal)} to Local{Viajante(nome)},
+    Viajante{roteiro(nomeroteiro)} to Roteiro{Viajante(nome)}
+}
+
+relationship ManyToOne {
+	Compartilhamento{viajante(nome)} to Viajante
+}
+
+// Set pagination options
+paginate Viajante with infinite-scroll
+paginate Local, Roteiro with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
