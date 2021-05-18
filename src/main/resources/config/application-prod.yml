@@ -34,7 +34,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://database-1.cluster-c9cq0pc1cwib.us-east-1.rds.amazonaws.com:5432/database-1-instance-1
-    username: reise_hybrid
+    username: admin
     password: adminadmin
     hikari:
       poolName: Hikari
